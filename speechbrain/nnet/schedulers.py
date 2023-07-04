@@ -137,7 +137,7 @@ class NewBobScheduler:
             "metric_values": self.metric_values,
             "current_patient": self.current_patient,
         }
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -270,7 +270,7 @@ class LinearWarmupScheduler:
             "num_training_steps": self.num_training_steps,
             "current_step": self.current_step,
         }
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -443,7 +443,7 @@ class NoamScheduler:
     def save(self, path):
         """Saves the current metrics on the specified path."""
         data = {"losses": self.losses, "n_steps": self.n_steps}
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -670,7 +670,7 @@ class CyclicCosineScheduler:
     def save(self, path):
         """Saves the curent metrics on the specified path."""
         data = {"losses": self.losses, "n_steps": self.n_steps}
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -782,7 +782,7 @@ class ReduceLROnPlateau:
             "anchor": self.anchor,
             "patience_counter": self.patience_counter,
         }
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -955,7 +955,7 @@ class CyclicLRScheduler:
     def save(self, path):
         """Saves the current metrics on the specified path."""
         data = {"losses": self.losses, "clr_iterations": self.clr_iterations}
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -1060,7 +1060,7 @@ class IntervalScheduler:
     def save(self, path):
         """Saves the current metrics on the specified path."""
         data = {"losses": self.losses, "n_steps": self.n_steps}
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
@@ -1114,7 +1114,7 @@ class InverseSquareRootScheduler:
     def save(self, path):
         """Saves the current metrics on the specified path."""
         data = {"n_steps": self.n_steps}
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
 
 @checkpoints.register_checkpoint_hooks
@@ -1218,7 +1218,7 @@ class WarmCoolDecayLRSchedule:
             "cooldown": self.cooldown,
             "total_steps": self.total_steps,
         }
-        checkpoints.parallel_safe_save(data, path)
+        torch.save(data, path)
 
     @checkpoints.mark_as_loader
     def load(self, path, end_of_epoch=False, device=None):
