@@ -1274,8 +1274,8 @@ class Brain:
             logger.info(
                 "Test only mode, skipping training and validation stages."
             )
-            return 
-        
+            return
+
         if not (
             isinstance(train_set, DataLoader)
             or isinstance(train_set, LoopedLoader)
